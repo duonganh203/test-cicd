@@ -31,7 +31,7 @@ jobs:
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{secrets.SSH_PRIVATE_KEY1 }}
 
       - name: Copy docker-compose.yml
         run: scp -r docker-compose.yml ${{secrets.SSH_USERNAME}}@${{secrets.SSH_HOST}}:/home/${{secrets.SSH_USERNAME}}/test-cicd/docker-compose.yml
