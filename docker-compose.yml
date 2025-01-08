@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  frontend:
+    build:
+      context: ./fe
+    ports:
+      - "4000:80"
+
+  backend:
+    build:
+      context: ./be
+    ports:
+      - "3000:4000"
+

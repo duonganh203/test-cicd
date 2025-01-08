@@ -18,6 +18,30 @@ jobs:
         run: |
           docker login -u ${{secrets.DOCKER_HUB_USERNAME}} -p ${{secrets.DOCKER_HUB_TOKEN}}
           docker push ${{secrets.DOCKER_HUB_USERNAME}}/fe-cicd:latest
-          docker push ${{secrets.DOCKER_HUB_USERNAME}}/be-cicd:latest 
+          docker push ${{secrets.DOCKER_HUB_USERNAME}}/be-cicd:latest
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    needs: publish
 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.1
+        with:
+          ssh-private-key: ${{secrets.SSH_PRIVATE_KEY }}
+
+      - name: Copy docker-compose.yml
+        run: scp -r docker-compose.yml ${{secrets.SSH_USERNAME}}@${{secrets.SSH_HOST}}:/home/${{secrets.SSH_USERNAME}}/test-cicd/docker-compose.yml
+
+      - name: Deploy with docker-compose
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+          cd /home/${{ secrets.SSH_USER }}/test-cicd
+          docker pull ${{ secrets.DOCKER_USERNAME }}/fe-cicd:latest
+          docker pull ${{ secrets.DOCKER_USERNAME }}/be-cicd:latest
+          docker-compose down
+          docker-compose up -d
+          EOF
