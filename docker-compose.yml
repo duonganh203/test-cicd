@@ -1,14 +1,14 @@
 version: '3.8'
 services:
   backend:
-    image: ${{secrets.DOCKER_HUB_USERNAME}}/be-cicd:latest
+    image: "duonganh203/be-cicd:latest"
     container_name: backend
     networks:
       - "test-cicd"
     ports:
       - "3000:4000"
   frontend:
-    image: ${{secrets.DOCKER_HUB_USERNAME}}/fe-cicd:latest
+    image: "duonganh203/fe-cicd:latest"
     container_name: frontend
     depends_on:
       - "backend"
