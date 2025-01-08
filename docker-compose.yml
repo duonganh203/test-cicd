@@ -6,7 +6,7 @@ services:
     networks:
       - "test-cicd"
     ports:
-      - "3000:4000"
+      - "3000:3000"
   frontend:
     image: "duonganh203/fe-cicd:latest"
     container_name: frontend
