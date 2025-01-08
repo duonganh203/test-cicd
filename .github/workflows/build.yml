@@ -39,10 +39,9 @@ jobs:
       - name: Deploy with docker-compose
         run: |
           ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-          echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker ps 
           cd /home/${{ secrets.SSH_USERNAME }}/test-cicd
-          docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/fe-cicd:latest
-          docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/be-cicd:latest
-          docker-compose down
-          docker-compose up -d
+          echo "${{ secrets.SUDO_PASSWORD }}" | docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/fe-cicd:latest
+          echo "${{ secrets.SUDO_PASSWORD }}" | docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/be-cicd:latest
+          echo "${{ secrets.SUDO_PASSWORD }}" | docker-compose down
+          echo "${{ secrets.SUDO_PASSWORD }}" | docker-compose up -d
           EOF
