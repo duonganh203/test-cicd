@@ -40,8 +40,8 @@ jobs:
         run: |
           ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
           cd /home/${{ secrets.SSH_USERNAME }}/test-cicd
-          docker pull ${{ secrets.DOCKER_USERNAME }}/fe-cicd:latest
-          docker pull ${{ secrets.DOCKER_USERNAME }}/be-cicd:latest
+          docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/fe-cicd:latest
+          docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/be-cicd:latest
           docker-compose down
           docker-compose up -d
           EOF
