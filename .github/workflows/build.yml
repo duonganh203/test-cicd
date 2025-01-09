@@ -40,6 +40,6 @@ jobs:
         run: |
           ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
           cd /home/${{ secrets.SSH_USERNAME }}/test-cicd
-          sudo docker-compose down --rmi --remove-orphans
+          sudo docker-compose down --rmi all
           sudo docker-compose up -d
           EOF
