@@ -1,23 +1,21 @@
-FROM node:23 AS build
+FROM node:23-alpine AS build
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm ci
 
 COPY . .
-
 RUN npm run build
 
-FROM node:23
+FROM node:23-alpine
 
 WORKDIR /app
 
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/package*.json ./
-
-RUN npm install --production
+RUN npm ci --only=production
 
 EXPOSE 3000
 
