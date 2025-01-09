@@ -6,10 +6,10 @@ services:
     command:
       - "--api.insecure=true"
       - "--providers.docker=true"
-      - "--entryPoints.web.address=:80"
+      - "--entryPoints.web.address=:100"
       - "--entryPoints.websecure.address=:443"
     ports:
-      - "80:80"
+      - "100:100"
       - "443:443"
     networks:
       - "test-cicd"
@@ -40,7 +40,7 @@ services:
       - "4000:80"
     labels:
       - "traefik.http.routers.app.rule=Host(`benkyo.systeme.io`)"
-      - "traefik.http.services.app.loadbalancer.server.port=80"
+      - "traefik.http.services.app.loadbalancer.server.port=100"
  
 networks:
   test-cicd:
