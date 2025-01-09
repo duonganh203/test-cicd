@@ -12,6 +12,8 @@ services:
     env_file:
       - .env
     container_name: frontend
+    environment:
+      - APP_HELLO=${APP_HELLO}
     depends_on:
       - "backend"
     networks:
