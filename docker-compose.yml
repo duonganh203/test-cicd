@@ -9,9 +9,9 @@ services:
       - "3000:3000"
   frontend:
     image: "duonganh203/fe-cicd:latest"
-    env_file:
-      - .env
     container_name: frontend
+        env_file:
+      - .env
     environment:
       - APP_HELLO=${APP_HELLO}
     depends_on:
