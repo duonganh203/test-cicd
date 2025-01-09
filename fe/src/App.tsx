@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 function App() {
   const [hello] = useState(import.meta.env.APP_HELLO);
+  useEffect(() => {
+    console.log(import.meta.env.APP_HELLO);
+  });
   return (
     <>
       <h4>{hello}</h4>
