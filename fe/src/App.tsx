@@ -28,9 +28,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <p>Hello Hữu Tiến</p>
-      <p>Hello Hưng Hà</p>
-      <p>Chúc mừng sinh nhật</p>
+      <p>Hello hT</p>
     </>
   );
 }
