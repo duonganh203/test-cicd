@@ -1,22 +1,5 @@
 version: '3.8'
 services:
-  traefik:
-    image: traefik:v2.5
-    container_name: traefik
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--entryPoints.web.address=:80"
-      - "--entryPoints.websecure.address=:443"
-    ports:
-      - "80:80"
-      - "443:443"
-    networks:
-      - "test-cicd"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    labels:
-      - "traefik.enable=true"
   backend:
     image: "duonganh203/be-cicd:latest"
     container_name: backend
@@ -37,10 +20,7 @@ services:
     networks:
       - "test-cicd"
     ports:
-      - "4000:90"
-    labels:
-      - "traefik.http.routers.app.rule=Host(`benkyo.systeme.io`)"
-      - "traefik.http.services.app.loadbalancer.server.port=80"
+      - "4000:80"
  
 networks:
   test-cicd:
