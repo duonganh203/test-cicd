@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 function App() {
-  const [hello] = useState(import.meta.env.APP_HELLO);
+  const [hello] = useState(import.meta.env.APP_API_URL);
   useEffect(() => {
-    console.log(import.meta.env.APP_HELLO);
+    console.log(import.meta.env);
   });
   return (
     <>
