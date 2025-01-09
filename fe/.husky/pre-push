@@ -1,5 +1,5 @@
 #!/bin/sh
-
+cd fe
 protected_branch='main'
 
 # github blocks password-based auth, but still usable via API token
