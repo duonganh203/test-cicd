@@ -13,6 +13,9 @@ services:
     container_name: frontend
     env_file:
       - .env
+    environment:
+      - VITE_APP_API_URL=${VITE_APP_API_URL}
+      - VITE_APP_HELLO=${VITE_APP_HELLO}
     depends_on:
       - "backend"
     networks:
