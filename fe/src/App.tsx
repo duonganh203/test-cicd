@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 function App() {
-  const [hello] = useState(import.meta.env.VITE_APP_HELLO);
+  const [hello] = useState(import.meta.env.VITE_HELLO);
   useEffect(() => {
     console.log(import.meta.env);
   });
