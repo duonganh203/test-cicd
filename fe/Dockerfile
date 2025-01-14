@@ -7,7 +7,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build --mode production
+RUN npm run build
 
 FROM nginx:stable-alpine
 
