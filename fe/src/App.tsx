@@ -3,7 +3,12 @@ import "./App.css";
 function App() {
   const [hello] = useState(import.meta.env.VITE_HELLO);
   useEffect(() => {
-    console.log(import.meta.env);
+    const callApi = async () => {
+      const response = await fetch(import.meta.env.VITE_API_URL);
+      const data = await response.json();
+      console.log(data);
+    };
+    callApi();
   });
   return (
     <>
