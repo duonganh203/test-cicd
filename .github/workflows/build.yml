@@ -5,6 +5,8 @@ on:
       - main
 env:
   HUSKY: 0
+  VITE_API_URL: ${{secrets.VITE_API_URL}}
+  VITE_HELLO: ${{secrets.VITE_HELLO}}
 
 jobs:
   publish:
@@ -12,6 +14,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Pre-build Client
+        run: |
+          cd client
+          envsubst < .env.example > .env
+          cat .env
+          cd ..
       - name: Build image
         run: |
           docker build ./fe/ -t ${{secrets.DOCKER_HUB_USERNAME}}/fe-cicd:latest
