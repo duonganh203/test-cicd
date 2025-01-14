@@ -15,9 +15,3 @@ temp
 .idea
 *.sublime*
 
-# Ignore environment files (optional, if not needed in the build context)
-.env
-.env.local
-.env.development
-.env.test
-.env.*.local
