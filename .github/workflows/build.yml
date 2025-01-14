@@ -16,10 +16,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Pre-build Client
         run: |
-          cd client
+          cd fe
           envsubst < .env.example > .env
           cat .env
-          cd ..
       - name: Build image
         run: |
           docker build ./fe/ -t ${{secrets.DOCKER_HUB_USERNAME}}/fe-cicd:latest
