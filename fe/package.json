@@ -9,11 +9,13 @@
     "lint": "eslint .",
     "lint-staged": "lint-staged",
     "preview": "vite preview",
-    "prepare": "cd .. && husky fe/.husky"
+    "prepare": "cd .. && husky fe/.husky",
+    "serve": "serve -s dist"
   },
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "serve": "^14.2.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
